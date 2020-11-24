@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>apply | yuki个人笔记</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.4276bc6b.css" as="style"><link rel="preload" href="/assets/js/app.037ff89d.js" as="script"><link rel="preload" href="/assets/js/2.d643d725.js" as="script"><link rel="preload" href="/assets/js/13.3ebed970.js" as="script"><link rel="prefetch" href="/assets/js/10.3a26f424.js"><link rel="prefetch" href="/assets/js/11.507060d3.js"><link rel="prefetch" href="/assets/js/12.96f35785.js"><link rel="prefetch" href="/assets/js/14.2040fc74.js"><link rel="prefetch" href="/assets/js/15.d8caea04.js"><link rel="prefetch" href="/assets/js/16.bdbc61fb.js"><link rel="prefetch" href="/assets/js/3.e3360fb9.js"><link rel="prefetch" href="/assets/js/4.2e789102.js"><link rel="prefetch" href="/assets/js/5.80c81eb6.js"><link rel="prefetch" href="/assets/js/6.7dc41bc7.js"><link rel="prefetch" href="/assets/js/7.9ffcbc47.js"><link rel="prefetch" href="/assets/js/8.500a2aef.js"><link rel="prefetch" href="/assets/js/9.b7107b20.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4276bc6b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/1.jpg" alt="yuki个人笔记" class="logo"> <span class="site-name can-hide">yuki个人笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的臭弟弟" class="dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的臭弟弟" class="mobile-dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/photo/" class="nav-link">
+  公开处刑
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的臭弟弟" class="dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的臭弟弟" class="mobile-dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/photo/" class="nav-link">
+  公开处刑
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/zh/guide/" aria-current="page" class="sidebar-link">bind Polyfill</a></li><li><a href="/zh/guide/apply.html" aria-current="page" class="active sidebar-link">apply</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/apply.html#参数" class="sidebar-link">参数</a></li><li class="sidebar-sub-header"><a href="/zh/guide/apply.html#返回值" class="sidebar-link">返回值</a></li><li class="sidebar-sub-header"><a href="/zh/guide/apply.html#描述" class="sidebar-link">描述</a></li></ul></li><li><a href="/zh/guide/test.html" class="sidebar-link">测试路由</a></li><li><a href="/zh/guide/debounce.html" class="sidebar-link">debounce防抖</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="参数"><a href="#参数" class="header-anchor">#</a> 参数</h2> <h3 id="thisarg"><a href="#thisarg" class="header-anchor">#</a> thisArg</h3> <p>必选的。在 func 函数运行时使用的 this 值。请注意，this可能不是该方法看到的实际值：如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动替换为指向全局对象，原始值会被包装。</p> <h3 id="argsarray"><a href="#argsarray" class="header-anchor">#</a> argsArray</h3> <p>可选的。一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 func 函数。如果该参数的值为 null 或  undefined，则表示不需要传入任何参数。从ECMAScript 5 开始可以使用类数组对象。 浏览器兼容性 请参阅本文底部内容。</p> <h2 id="返回值"><a href="#返回值" class="header-anchor">#</a> 返回值</h2> <p>调用有指定this值和参数的函数的结果。</p> <h2 id="描述"><a href="#描述" class="header-anchor">#</a> 描述</h2> <p>在调用一个存在的函数时，你可以为其指定一个 this 对象。 this 指当前对象，也就是正在调用这个函数的对象。 使用 apply， 你可以只写一次这个方法然后在另一个对象中继承它，而不用在新对象中重复写该方法。</p> <p>apply 与 call() 非常相似，不同之处在于提供参数的方式。apply 使用参数数组而不是一组参数列表。apply 可以使用数组字面量（array literal），如 fun.apply(this, ['eat', 'bananas'])，或数组对象， 如  fun.apply(this, new Array('eat', 'bananas'))。</p> <p>你也可以使用 arguments对象作为 argsArray 参数。 arguments 是一个函数的局部变量。 它可以被用作被调用对象的所有未指定的参数。 这样，你在使用apply函数的时候就不需要知道被调用对象的所有参数。 你可以使用arguments来把所有的参数传递给被调用对象。 被调用对象接下来就负责处理这些参数。</p> <p>从 ECMAScript 第5版开始，可以使用任何种类的类数组对象，就是说只要有一个 length 属性和(0..length-1)范围的整数属性。例如现在可以使用 NodeList 或一个自己定义的类似 {'length': 2, '0': 'eat', '1': 'bananas'} 形式的对象。</p> <!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年11月15日星期日晚上11点26分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/zh/guide/" class="prev router-link-active">
+        bind Polyfill
+      </a></span> <span class="next"><a href="/zh/guide/test.html">
+        测试路由
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.037ff89d.js" defer></script><script src="/assets/js/2.d643d725.js" defer></script><script src="/assets/js/13.3ebed970.js" defer></script>
+  </body>
+</html>

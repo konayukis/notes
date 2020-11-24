@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>bind Polyfill | yuki个人笔记</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.4276bc6b.css" as="style"><link rel="preload" href="/assets/js/app.037ff89d.js" as="script"><link rel="preload" href="/assets/js/2.d643d725.js" as="script"><link rel="preload" href="/assets/js/12.96f35785.js" as="script"><link rel="prefetch" href="/assets/js/10.3a26f424.js"><link rel="prefetch" href="/assets/js/11.507060d3.js"><link rel="prefetch" href="/assets/js/13.3ebed970.js"><link rel="prefetch" href="/assets/js/14.2040fc74.js"><link rel="prefetch" href="/assets/js/15.d8caea04.js"><link rel="prefetch" href="/assets/js/16.bdbc61fb.js"><link rel="prefetch" href="/assets/js/3.e3360fb9.js"><link rel="prefetch" href="/assets/js/4.2e789102.js"><link rel="prefetch" href="/assets/js/5.80c81eb6.js"><link rel="prefetch" href="/assets/js/6.7dc41bc7.js"><link rel="prefetch" href="/assets/js/7.9ffcbc47.js"><link rel="prefetch" href="/assets/js/8.500a2aef.js"><link rel="prefetch" href="/assets/js/9.b7107b20.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4276bc6b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/assets/img/1.jpg" alt="yuki个人笔记" class="logo"> <span class="site-name can-hide">yuki个人笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的臭弟弟" class="dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的臭弟弟" class="mobile-dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/photo/" class="nav-link">
+  公开处刑
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="我的臭弟弟" class="dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow down"></span></button> <button type="button" aria-label="我的臭弟弟" class="mobile-dropdown-title"><span class="title">我的臭弟弟</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/guide/photo/" class="nav-link">
+  公开处刑
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/zh/guide/" aria-current="page" class="active sidebar-link">bind Polyfill</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/zh/guide/#不支持使用new调用新创建的构造函数" class="sidebar-link">不支持使用new调用新创建的构造函数</a></li><li class="sidebar-sub-header"><a href="/zh/guide/#在没有内置实现支持的环境中也可以部分地使用bind" class="sidebar-link">在没有内置实现支持的环境中也可以部分地使用bind</a></li></ul></li><li><a href="/zh/guide/apply.html" class="sidebar-link">apply</a></li><li><a href="/zh/guide/test.html" class="sidebar-link">测试路由</a></li><li><a href="/zh/guide/debounce.html" class="sidebar-link">debounce防抖</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="不支持使用new调用新创建的构造函数"><a href="#不支持使用new调用新创建的构造函数" class="header-anchor">#</a> 不支持使用new调用新创建的构造函数</h2> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Does not work with `new (funcA.bind(thisArg, args))`</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> slice <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>slice<span class="token punctuation">;</span>
+  <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">bind</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> thatFunc <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span> thatArg <span class="token operator">=</span> arguments<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> args <span class="token operator">=</span> <span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> thatFunc <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// closest thing possible to the ECMAScript 5</span>
+      <span class="token comment">// internal IsCallable function</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Function.prototype.bind - '</span> <span class="token operator">+</span>
+             <span class="token string">'what is trying to be bound is not callable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">var</span> funcArgs <span class="token operator">=</span> args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token function">slice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token function">thatFunc</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>thatArg<span class="token punctuation">,</span> funcArgs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="在没有内置实现支持的环境中也可以部分地使用bind"><a href="#在没有内置实现支持的环境中也可以部分地使用bind" class="header-anchor">#</a> 在没有内置实现支持的环境中也可以部分地使用bind</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//  Yes, it does work with `new (funcA.bind(thisArg, args))`</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>bind<span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> ArrayPrototypeSlice <span class="token operator">=</span> <span class="token class-name">Array</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>slice<span class="token punctuation">;</span>
+  <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">bind</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">otherThis</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token keyword">this</span> <span class="token operator">!==</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// closest thing possible to the ECMAScript 5</span>
+      <span class="token comment">// internal IsCallable function</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">TypeError</span><span class="token punctuation">(</span><span class="token string">'Function.prototype.bind - what is trying to be bound is not callable'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> baseArgs<span class="token operator">=</span> <span class="token function">ArrayPrototypeSlice</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>arguments<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        baseArgsLength <span class="token operator">=</span> baseArgs<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+        fToBind <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fNOP</span>    <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">fBound</span>  <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          baseArgs<span class="token punctuation">.</span>length <span class="token operator">=</span> baseArgsLength<span class="token punctuation">;</span> <span class="token comment">// reset to default base arguments</span>
+          baseArgs<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>baseArgs<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token function">fToBind</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>
+                 fNOP<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">isPrototypeOf</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token keyword">this</span> <span class="token operator">:</span> otherThis<span class="token punctuation">,</span> baseArgs
+          <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Function.prototype doesn't have a prototype property</span>
+      fNOP<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>prototype<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    fBound<span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">fNOP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> fBound<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><!----></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">更新时间:</span> <span class="time">2020年11月15日星期日晚上11点26分</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/zh/guide/apply.html">
+        apply
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.037ff89d.js" defer></script><script src="/assets/js/2.d643d725.js" defer></script><script src="/assets/js/12.96f35785.js" defer></script>
+  </body>
+</html>
